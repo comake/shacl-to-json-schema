@@ -1,4 +1,4 @@
-# SHACL To JSON Schame
+# SHACL To JSON Schema
 
 This is a simple library to translate SHACL NodeShapes into JSON Schemas. It does not support the full SHACL vocabulary, only those fields which can be applied to JSON Schema.
 
