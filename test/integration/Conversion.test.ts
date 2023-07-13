@@ -1,6 +1,5 @@
 import { nodeShapeToJSONSchema } from '../../src/SHACLToJSONSchema';
 import { NodeShape } from '../../src/Types';
-import { SHACL } from '../../src/Vocabulary';
 
 describe('Converting SHACL to JSONSChema.', (): void => {
   it('throws an error if an unsupported shacl:path is used.', (): void => {
