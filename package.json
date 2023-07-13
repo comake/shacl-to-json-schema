@@ -1,8 +1,12 @@
 {
   "name": "@comake/shacl-to-json-schema",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
   "scripts": {
     "build": "tsc",
     "jest": "jest --coverage",
