@@ -133,7 +133,7 @@ function propertyShapeToJSONSchema(
   } else if (SHACL.nodeKind in shape) {
     schema = propertyShapeWithNodeKindToJSONSchema(shape);
   } else {
-    throw new Error('Only property shapes with shacl:datatype and shacl:node are supported.');
+    throw new Error('Only property shapes with shacl:datatype, shacl:node, and shacl:nodeKind are supported.');
   }
   if (maxCountValue !== 0 && maxCountValue !== 1) {
     schema = { 

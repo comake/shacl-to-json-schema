@@ -60,7 +60,7 @@ describe('Converting SHACL to JSONSChema.', (): void => {
       }
     };
 
-    expect(() => nodeShapeToJSONSchema(shape)).toThrow('Only property shapes with shacl:datatype and shacl:node are supported.');
+    expect(() => nodeShapeToJSONSchema(shape)).toThrow('Only property shapes with shacl:datatype, shacl:node, and shacl:nodeKind are supported.');
   });
 
   it('throws an error if a property uses an invalid shacl:nodeKind.', (): void => {

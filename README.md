@@ -1,6 +1,12 @@
-# shacl-to-json-schema
+# SHACL To JSON Schame
 
-This is a simple library to translate SHACL NodeShapes into JSON Schemas. It does not support the full SHACL vocabulary, only those fields which can be applied to JSON objects using a JSON Schema.
+This is a simple library to translate SHACL NodeShapes into JSON Schemas. It does not support the full SHACL vocabulary, only those fields which can be applied to JSON Schema.
+
+## Install
+
+```shell
+npm install @comake/shacl-to-json-schema
+```
 
 ## Usage
 
@@ -57,7 +63,7 @@ console.log(schema);
 // {
 //   type: 'object',
 //   properties: {
-//     field: { 
+//     field: {   <---- Uses "field" instead of "https://example.com/field"
 //       type: 'string'
 //     }
 //   }
@@ -68,7 +74,7 @@ console.log(schema);
 
 ## Support
 
-Currently this library only supports properties that include `shacl:datatype`, `shacl:node`, or `shacl:nodeKind`.
+Currently this library only supports properties that include a `shacl:datatype`, `shacl:node`, or `shacl:nodeKind`.
 
 Supported `shacl:datatype` values:
 - `xsd:string` generates a JSON Schema with type `string`
@@ -93,7 +99,7 @@ Supported `shacl:nodeKind` values:
 - `sh:BlankNodeOrLiteral` generates a JSON Schema with type `string`, `number`, `boolean`, `object`, or `array`
 - `sh:IRIOrLiteral` generates a JSON Schema with type `string`, `number`, `boolean`, `object`, or `array`
 
-Support for `shacl:maxLength` when `shacl:datatype` is one of:
+Support for `shacl:maxLength`, which adds `maxLength` to the resulting JSON Schema property when the `shacl:datatype` is one of:
 - `xsd:string`
 - `xsd:dateTime`
 - `xsd:date`
@@ -103,7 +109,7 @@ Support for `shacl:in` for all datatypes, which produces a JSON Schema `enum`
 
 Support for `shacl:minExclusive`, `shacl:minInclusive`, `shacl:maxExclusive`, `shacl:maxInclusive` for all numeric datatypes
 
-Support for `shacl:name` and `shacl:description` which get added when the options `addTitles`, or `addDescriptions` are set to `true`, respectively.
+Optional support for `shacl:name` and `shacl:description` when the options `addTitles` or `addDescriptions` are set to `true`, respectively. Doing so will add JSON Schema `title` and `description` to the resulting properties.
 
 Support for `shacl:minCount` and `shacl:maxCount`:
 - If `shacl:maxCount` is unset or greater than 1, the property will be treated as an array. If so, `shacl:maxCount` and `shacl:minCount` values are used to set `maxItems` and `minItems` in the resulting JSON Schema.
@@ -115,7 +121,7 @@ Support for `shacl:closed`. When true, the resulting JSON Schema will have `addi
 
 No support for SHACL predicates `shacl:lessThanOrEquals`, `shacl:lessThan`, `shacl:flag`, `shacl:equal`, `shacl:class`, and `shacl:languageIn`.
 
-There is also no support for complex SHACL Property Paths including Sequence Paths, Alternative Paths, Inverse Paths, Zero-Or-More Paths, One-Or-More Paths, and Zero-Or-One Paths.
+There is also currently no support for complex SHACL Property Paths including Sequence Paths, Alternative Paths, Inverse Paths, Zero-Or-More Paths, One-Or-More Paths, and Zero-Or-One Paths.
 
 ## API
 
@@ -127,8 +133,8 @@ Converts SHACL NodeShapes encoded as JSON-LD into JSON Schema.
 
 | Parameter | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
-| `shape` | a SHACL NodeShape | Required | The SHACL NodeShape to convert. |
-| `options` | `object` |  | A `ConversionOptions` object.  |
+| `shape` | `JSON` | Required | The SHACL NodeShape to convert encoded as JSON-LD. |
+| `options` | `object` |  | A `ConversionOptions` object (see below).  |
 
 #### ConversionOptions
 
