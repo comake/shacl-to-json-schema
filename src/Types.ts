@@ -1,5 +1,5 @@
 import type { SHACL, RDF } from './Vocabulary';
-import type { NodeObject } from 'jsonld';
+import type { ListObject, NodeObject } from 'jsonld';
 
 export type OrArray<T> = T | T[];
 
@@ -48,7 +48,7 @@ export type BaseShape = NodeObject & {
   [SHACL.ignoredProperties]?: ShaclIRI[];
   [SHACL.disjoint]?: OrArray<ShaclIRI>;
   [SHACL.equals]?: OrArray<ShaclIRI>;
-  [SHACL.in]?: any[];
+  [SHACL.in]?: ListObject;
   [SHACL.languageIn]?: string[];
   [SHACL.maxExclusive]?: ValueObject<number>;
   [SHACL.maxInclusive]?: ValueObject<number>;

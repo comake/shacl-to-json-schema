@@ -158,20 +158,22 @@ describe('Converting SHACL to JSONSChema.', (): void => {
             '@value': 1,
             '@type': 'http://www.w3.org/2001/XMLSchema#integer'
           },
-          'http://www.w3.org/ns/shacl#in': [
-            {
-              '@value': 'a',
-              '@type': 'http://www.w3.org/2001/XMLSchema#string'
-            },
-            {
-              '@value': 'b',
-              '@type': 'http://www.w3.org/2001/XMLSchema#string'
-            },
-            {
-              '@value': 'c',
-              '@type': 'http://www.w3.org/2001/XMLSchema#string'
-            },
-          ],
+          'http://www.w3.org/ns/shacl#in': {
+            '@list': [
+              {
+                '@value': 'a',
+                '@type': 'http://www.w3.org/2001/XMLSchema#string'
+              },
+              {
+                '@value': 'b',
+                '@type': 'http://www.w3.org/2001/XMLSchema#string'
+              },
+              {
+                '@value': 'c',
+                '@type': 'http://www.w3.org/2001/XMLSchema#string'
+              },
+            ]
+          },
           'http://www.w3.org/ns/shacl#path': {
             '@id': 'https://example.com/field'
           }
